@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>00857007-HW5-1</title>
+    
+    <script>
+        
+		// 設計按鈕事件處理器的function
+		function start() {
+            //找到id為"displayButton"的網頁元素物件(就是那個按鈕的物件)
+            var button1 = document.getElementById("TriangleButton");
+            //幫按鈕註冊事件處理器，一旦按鈕被使用者點擊，就會呼叫display function
+            button1.addEventListener("click", display1, false);
+
+            var button2 = document.getElementById("SqureButton");
+            button2.addEventListener("click", display2, false);
+        }
+
+        // 顯示訊息的function
+        function display1() {
+            //找到id為"name"的網頁元素物件(就是那個文字欄位的物件)
+            var content;
+            var numberFieldObject = document.getElementById("number");
+            //取得文字欄位的文字內容
+            var content = numberFieldObject.value;
+
+            if(content > 10)
+                alert("You input an invalid value!");
+            else
+                message = produceBaseballHtml(content);
+
+            //找到id為"display"的網頁元素物件(就是那個div區塊的物件)
+            //將div區塊的內容改為我們準備好的html片段，網頁上的div就會顯示新的內容
+        }
+
+        function display2() {
+            //找到id為"name"的網頁元素物件(就是那個文字欄位的物件)
+            var numberFieldObject = document.getElementById("number");
+            //取得文字欄位的文字內容
+            var content = numberFieldObject.value;
+
+            if(content > 10)
+                alert("You input an invalid value!");
+            else
+                message = produceBaseballHtml2(content);
+            //組合出想在div區塊中呈現的html片段
+
+            //找到id為"display"的網頁元素物件(就是那個div區塊的物件)
+
+            //將div區塊的內容改為我們準備好的html片段，網頁上的div就會顯示新的內容
+        }
+
+
+        //幫視窗註冊事件處理器，在網頁載入完成後，"load"事件就觸發，而"load"事件一發生，就會呼叫start function
+
+        function produceBaseballHtml(content){
+            document.getElementById("display").innerHTML="";
+
+            for ( var i = 1 ; i <= content; i++){
+                for(var j = content - i; j >= 1 ; j--){
+                    document.getElementById("display").innerHTML+="<img src = 'blank.png' width = '50' height = '50'>";
+                }
+                for(var k = 1; k <= i; k++){
+                    document.getElementById("display").innerHTML+="<img src = 'baseball.jpg' width = '50' height = '50'>";
+                }
+                document.getElementById("display").innerHTML+="</br>";
+            }
+        }
+        function produceBaseballHtml2(content){
+            document.getElementById("display").innerHTML="";
+
+            for ( var i = 1 ; i <= content; i++){
+                for(var j = 1; j <= content ; j++){
+                    document.getElementById("display").innerHTML+="<img src = 'baseball.jpg' width = '50' height = '50'>";
+                }
+                document.getElementById("display").innerHTML+="</br>";
+            }
+        }
+        window.addEventListener("load", start, false);
+	</script>
+</head>
+
+<body>
+    <!-- 文字欄位元素與按鈕元素 -->
+    
+    <p>Side length (<=10):</p>
+	<input id="number" type="text" placeholder="5" value="5">
+    <input id="TriangleButton" type="button" value="Draw baseBall Triangle">
+    <input id="SqureButton" type="button" value="Draw baseBall Squre">
+    
+	<!-- 預留div區塊，以便能更新此區塊之內容 -->
+	<div id="display"></div>
+</body>
+
+</html>

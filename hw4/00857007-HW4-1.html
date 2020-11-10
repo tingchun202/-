@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<!-- Exercise 7.7b: ex07_07b.html --> 
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>00857007-HW4-1</title>
+      <script>
+
+         var Pokemon;
+         var count1, count2;
+         Pokemon = window.prompt("Please input the Pokemon you like\n" + "(1=pikachu, 2=bulbasaur, 3=charmander, 4=squirtle, 5=random):", "1" );
+         Pokemon2 = parseInt(Pokemon);
+         if(Pokemon2 > 5 || Pokemon2 < 0)
+            alert("Wrong input! Please press [F5] to reload the page!");
+         count1 = window.prompt("Please input the side length (>=1 and <=10):", "5" );
+         count2 = parseInt( count1 ); 
+         if(count2 > 10 || count2 < 0)
+            alert("Wrong input! Please press [F5] to reload the page!");
+
+         for( var temp = 1; temp <= count2; ++temp)
+         {
+            if ( Pokemon == 1 )
+            {
+                for(var temp2 = 1; temp2 <= count2; ++temp2)
+                {
+                    document.writeln("<img src = 'pikachu.png' width = '100' height = '100'>");
+                    console.log("img src = 'pikachu.png'");
+                }
+                document.writeln("</br>");
+            }
+            if ( Pokemon == 2 )
+            {
+                for(var temp2 = 1; temp2 <= count2; ++temp2)
+                {
+                    document.writeln("<img src = 'bulbasaur.png'>");
+                    console.log("img src = 'bulbasaur.png'");
+
+                }
+                document.writeln("</br>");
+            }
+            if ( Pokemon == 3 )
+            {
+                for(var temp2 = 1; temp2 <= count2; ++temp2)
+                {
+                    document.writeln("<img src = 'charmander.png'>");
+                    console.log("img src = 'charmander.png'");
+
+                }
+                document.writeln("</br>");
+            }
+            if ( Pokemon == 4 )
+            {
+                for(var temp2 = 1; temp2 <= count2; ++temp2)
+                {
+                    document.writeln("<img src = 'squirtle.png'>");
+                    console.log("img src = 'squirtle.png'");
+
+                }
+                document.writeln("</br>");
+            }
+            if ( Pokemon == 5 )
+            {
+
+                for(var temp2 = 1; temp2 <= count2; ++temp2)
+                {
+                    var ir = Math.floor(Math.random()*10)%4;
+
+                    if(ir == 0)
+                        document.writeln("<img src = 'pikachu.png'>");
+                    if(ir == 1)
+                        document.writeln("<img src = 'bulbasaur.png'>");
+                    if(ir == 2)
+                        document.writeln("<img src = 'charmander.png'>");
+                    if(ir == 3)
+                        document.writeln("<img src = 'squirtle.png'>");
+                }
+                document.writeln("</br>");
+            }
+         }
+      </script>
+   </head><body></body>
+</html> 

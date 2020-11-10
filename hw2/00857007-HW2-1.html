@@ -1,0 +1,112 @@
+
+
+<!DOCTYPE html>
+
+<!-- Fig. 2.15: form2.html -->
+<!-- Form using a variety of components. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>00857007-HW2</title>
+      <style type = "text/css">
+        body   { font-family: Perpetua;font-size: 1.3em;}
+        p::first-letter{
+            font-size : 1.5em;
+        }
+        p input {color:blue; font-weight: 600;}
+        .nodec {color:firebrick;}
+      </style>
+   </head>
+
+   <body>
+      <form method = "get" action = "http://140.121.150.92:8080/show-form.jsp">
+
+         <input type = "hidden" name = "recipient"
+            value = "deitel@deitel.com">
+         <input type = "hidden" name = "subject" 
+            value = "Feedback Form">
+         <input type = "hidden" name = "redirect" 
+            value = "main.html"> 
+
+         <p><label>Your Name: 
+               <input name = "fullname" type = "text" size = "25">
+            </label></p>
+ 
+         <!-- <textarea> creates a multiline textbox -->
+         <p><label>Your email: 
+            <input name = "email" type = "email" size = "25">(name@domain.com)
+         </label></p>
+
+         <p><label>Your homepage's URL: 
+            <input name = "url" type = "url"  size = "25">(http://www.domainname.com)
+         </label></p>              
+
+         <p><label>Your birthday date: 
+            <input name = "date" type = "date" >(yyyy-mm-dd)
+         </label></p>   
+
+         <p><label>Your favorite color: 
+            <input name = "color" type = "color" >
+         </label></p> 
+         <p><label for = "textList">Your Department: 
+            <input name = "textList" type = "text" list = "Department of Aquaculture" >
+            <datalist id = "Department of Aquaculture">
+                <option value = "Department of Bioscience and Biotechnology">
+                <option value = "Department of Communications, Navigation and Control Engineering">
+                <option value = "Department of Computer Science and Engineering">
+                <option value = "Department of Electrical Engineering">
+                <option value = "Department of Environmental Biology and Fisheries Science">
+                <option value = "Department of Food Science">
+                <option value = "Department of Harbor and River Engineering">
+                <option value = "Department of Marine Engineering">
+                <option value = "Department of Marine Environmental Informatics">
+                <option value = "Department of Mechanical and Mechatronic Engineering">
+                <option value = "Department of Merchant Marine">
+                <option value = "Department of Optoelectronics and Materials Technology">
+                <option value = "Department of Shipping and Transportation Management">
+                <option value = "Department of Systems Engineering and Naval Architecture">
+                <option value = "Departme nt of Transportation Science">
+                </option>
+         </label></p> 
+         <p>
+            <strong>Check of all of the characteristics that you enjoyed about the college:</strong><br>
+
+            <label>
+               <input name = "likes" type = "checkbox" 
+                  value = "Campus">Campus
+               </label>
+            <label>
+               <input name = "likes" type = "checkbox" 
+                  value = "Student">Student
+               </label>
+            <label>
+               <input name = "likes" type = "checkbox" 
+                  value = "Location">Location
+               </label> 
+           
+         </p>
+         <p>
+            <strong>How did you become interested in our college?:</strong><br>
+
+            <label>
+               <input name = "interest" type = "radio"
+                  value = "Friend" checked>Friend
+               </label>
+            <label>
+               <input name = "interest" type = "radio" 
+                  value = "Television">Television
+               </label> 
+            <label>
+               <input name = "interest" type = "radio" 
+                  value = "Internet">Internet
+               </label>
+
+         </p>
+         <p>
+            <input  class = "nodec" type = "submit" value = "Submit">
+            <input  class = "nodec" type = "reset" value = "Clear">
+         </p>   
+      </form>
+   </body>
+</html>
+

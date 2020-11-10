@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>00857007-HW4-2</title>
+    <style type="text/CSS">
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+        h1 {
+            font-size: 50px;
+            font-family: cwTeXYen;
+        }
+		div {
+			font-size: 80px;
+			font-family: Consolas;
+			margin: 5px;
+            float: left;		}
+		div.number {
+            color:dodgerblue;
+            border-width: thin;
+            border-style: outset;
+            border-color:black;
+		}
+	</style>
+</head>
+
+<body>
+    <h1>四則運算結果:</h1>
+    <div class="number" id="num1">num1</div>
+    <div id="op">op</div>
+    <div class="number" id="num2">num2</div>
+    <div>=</div>
+    <div class="number" id="result">num3</div>
+    <script>
+            var choose, unmber1, number2, result, choosenum;
+            var n1, n2;
+            var op=["","+","-","*","/"];
+            choose = window.prompt("請輸入算數運算元 : 1 代表加(+) 、 2 代表減(-) 、 3 代表乘(*) 、 4 代表除(/)");
+            choosenum = parseInt(choose);
+            if(choosenum>4)
+                choosenum = parseInt(1);
+            if(isNaN(choose))
+            {
+                window.alert("輸入有誤！選項自動設為 1 。");
+                choosenum = parseInt(1);
+            }
+            number1 = window.prompt("請輸入第一個數字");
+            n1 = parseInt(number1);
+            if(isNaN(number1))
+            {
+                window.alert("輸入有誤！數值自動設定為0 。");
+                n1 = parseInt(0);
+            }
+            number2 = window.prompt("請輸入第二個數字");
+            n2 = parseInt(number2);
+            if(isNaN(number2))
+            {
+                window.alert("輸入有誤！數值自動設定為0 。");
+                n2 = parseInt(0);
+            }
+            if(choosenum == 1)
+                result = n1 + n2;
+            if(choosenum == 2)
+                result = n1 - n2;
+            if(choosenum == 3)
+                result = n1 * n2;
+            if(choosenum == 4)
+                result = n1 / n2;
+    
+            document.getElementById("num1").innerHTML=n1;
+            document.getElementById("num2").innerHTML=n2;
+            document.getElementById("result").innerHTML=result;
+            document.getElementById("op").innerHTML=op[choosenum];
+    
+    
+    </script>
+</body>
+
+</html>

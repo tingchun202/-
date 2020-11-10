@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<!-- Fig. 9.5: RollDice.html -->
+<!-- Random dice image generation using Math.random. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>00857007-HW5-2</title> 
+      <style type = "text/css">
+         li { display: inline; margin-right: 10px; }
+         ul { margin: 0; }
+         .word   {
+             color: navy;
+             font-size: 120%;
+             font-family: Helvetica, "Microsoft YaHei",  "LiHei Pro", "TW-Kai";
+             margin-right: 20px;
+         }
+      </style>
+      <script>
+         var result = 0;
+         // variables used to interact with the img elements
+         var die1Image;
+         var die2Image;
+         var die3Image;
+         var die4Image;
+
+         // register button listener and get the img elements
+         function start()
+         {
+            var button1 = document.getElementById( "rollButton" );
+            button1.addEventListener( "click", rollDice, false );
+            var button2 = document.getElementById( "examination" );
+            button2.addEventListener( "click", Shortcut, false );
+            var button3 = document.getElementById( "sippatlah" );
+            button3.addEventListener( "click", Shortcut2, false );
+            die1Image = document.getElementById( "die1" );
+            die2Image = document.getElementById( "die2" );
+            die3Image = document.getElementById( "die3" );
+            die4Image = document.getElementById( "die4" );
+            
+            //result    = document.getElementById( "result" );
+         } // end function start
+
+         // roll the dice
+         function rollDice()
+         {
+            result = 0;
+            d1=setImage( die1Image );
+            d2=setImage( die2Image );
+            d3=setImage( die3Image );
+            d4=setImage( die4Image );
+
+            if(d1 == d2 && d2 == d3 && d3 == d4)
+            {
+                result = 1;
+            }
+            if(d1 != d2 && d1 != d3 && d1 != d4 && d2 != d3 && d2 != d4 && d3 != d4)
+            {
+                result = 13;
+            }
+            a = resultdice();
+         } // end function rollDice
+
+         // set src and alt attributes for a die
+         function setImage( dieImg )
+         {
+            var dieValue = Math.floor( 1 + Math.random() * 6 );
+            dieImg.setAttribute( "src", "die" + dieValue + ".png" );
+            dieImg.setAttribute( "alt", 
+               "die image with " + dieValue + " spot(s)" );
+            return dieValue;
+         } // end function setImage
+         function Shortcut()
+         {
+            d1=showImage( die1Image );
+            d2=copyImage( die2Image ,d1);
+            d3=copyImage( die3Image ,d1);
+            d4=copyImage( die4Image ,d1);
+            a =congrats();
+        }
+        function Shortcut2()
+         {
+            var tmp = Math.floor( 2 + Math.random() * 3 );
+            d1=showImage( die1Image );
+            if( tmp == 2)
+            {
+                d2=copyImage( die2Image ,d1);
+                d3=setImage( die3Image );
+                d4=setImage( die4Image );
+                if(d1 == 6 && d3 == d4 && d3 != 6)
+                    result = 12;
+                else
+                    result = d3 + d4;
+            }
+            if( tmp == 3)
+            {
+                d2=setImage( die2Image );
+                d3=copyImage( die3Image ,d1);
+                d4=setImage( die4Image );
+                if(d1 == 6 && d3 == d4 && d3 != 6)
+                    result = 12;
+                else
+                    result = d2 + d4;
+            }
+            if( tmp == 4)
+            {
+                d2=setImage( die2Image );
+                d3=setImage( die3Image );
+                d4=copyImage( die4Image ,d1);
+                if(d1 == 6 && d3 == d4 && d3 != 6)
+                    result = 12;
+                else
+                    result = d2 + d3;
+            }
+            a =getscore( result );
+        }
+        function getscore( result )
+        {
+            document.getElementById("display").innerHTML="";
+            if( result == 12)
+            {
+                document.getElementById("display").innerHTML+="<p class = 'word'>Congratulations! Your roll is '一色'!</p>";
+                document.getElementById("display").innerHTML +="<p class = 'word'><img src = 'congrats.jpg'></p>"
+            }
+            else
+            document.getElementById("display").innerHTML+="<p class = 'word'>Your roll is <span class = 'word'>"+ result +"</span>!</p>";
+            
+
+
+        }
+
+         function showImage( dieImg )
+         {
+            var dieValue = Math.floor( 1 + Math.random() * 6 );
+            dieImg.setAttribute( "src", "die" + dieValue + ".png" );
+            dieImg.setAttribute( "alt", 
+               "die image with " + dieValue + " spot(s)" );
+            return dieValue;
+         } // end function showImage
+         function copyImage( dieImg, dieValue)
+         {
+            dieImg.setAttribute( "src", "die" + dieValue + ".png" );
+            dieImg.setAttribute( "alt", 
+               "die image with " + dieValue + " spot(s)" );
+         }
+         function congrats()
+         {
+            document.getElementById("display").innerHTML="";
+            document.getElementById("display").innerHTML+="<p class = 'word'>Congratulations! Your roll is '一色'!</p>";
+            document.getElementById("display").innerHTML +="<p class = 'word'><img src = 'congrats.jpg'></p>"
+         }
+
+         function resultdice()
+         {
+            document.getElementById("display").innerHTML="";
+            if(result == 1)
+            {
+                document.getElementById("display").innerHTML+="<p class = 'word'>Congratulations! Your roll is '一色'!</p>";
+                document.getElementById("display").innerHTML +="<p class = 'word'><img src = 'congrats.jpg'></p>"
+            }
+            if(result == 13){
+                document.getElementById("display").innerHTML+="<p class = 'word'>Oops! Your roll is '無面'!</p>";
+                document.getElementById("display").innerHTML+="<p class = 'word'><img src = 'oops.jpg' ></p>";
+            }
+            if(result != 1 && result != 13)
+                document.getElementById("display").innerHTML+="<p class = 'word'>No decision, please re-roll the dice!</p>";
+         }
+         window.addEventListener( "load", start, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <input id = "rollButton" type = "button" value = "Roll Dice">
+         <input id = "examination" type = "button" value = "Shortcut">
+         <input id = "sippatlah" type = "button" value = "Shortcut2">
+      </form>
+      <ol>
+         <li><img id = "die1" src = "blank.png" alt = "blank image"></li>
+         <li><img id = "die2" src = "blank.png" alt = "blank image"></li>
+         <li><img id = "die3" src = "blank.png" alt = "blank image"></li>
+         <li><img id = "die4" src = "blank.png" alt = "blank image"></li>
+      </ol>
+      <div id="display"></div>
+   </body>
+</html>

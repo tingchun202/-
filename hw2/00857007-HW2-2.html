@@ -1,0 +1,58 @@
+
+<!-- Fig 4.9: positioning.html -->
+<!-- Absolute positioning of elements. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>00857007-HW2</title>
+      <style type = "text/css">
+      .background_image   { position: absolute;
+                 background-repeat: no-repeat;
+                 top: 0px;
+                 left: 0px;
+                 z-index: -1; }
+      .foreground_image   { position: absolute;
+                 width:100;
+                 height:100;
+                 top: 0px;
+                 left: 800px;
+                 z-index: 2; }
+      .text    { 
+                 z-index: 3;
+                 font-size: 20pt;
+                 font-family: Helvetica, tahoma, sans-serif;
+                 color:white } 
+      .adeco    { 
+                  z-index: 3;
+                  font-size: 10pt;
+                  font-family: Helvetica, tahoma, sans-serif;
+                  color:white}
+      a:hover   {
+                  z-index: 3;
+                  font-size: 10pt;
+                  font-family: Helvetica, tahoma, sans-serif;
+                  color:navy;
+                  background-color: lightblue;
+                  font-weight:bold;
+                }
+      .sub        { position: relative;
+                     bottom: 1ex; }
+      </style>
+   </head>
+   <body>
+     <p><img src = "ntou.jpg" class = "background_image"
+         alt = "First positioned image" /></p>
+      <p><img src = "ntou_logo.png" class = "foreground_image"
+         alt = "Second positioned image" /></p>
+      
+      <p class = "text">Here are my favorite sites</p>
+      <p class = "adeco">Click on a name to go that website</p>
+      <p class = "adeco"><a href = "http://www.google.com" target="_blank">
+        <img src="link.png" width="20" height="20" class = "sub">Google</span></p></a>
+      <p class = "adeco"><a href = "http://www.facebook.com" target="_blank">
+        <span class = "sub"><img src="link.png" width="20" height="20" >Facebook</span></p></a>
+      <p class = "adeco"><a href = "https://www.youtube.com/" target="_blank">
+        <img src="link.png" width="20" height="20" ><span class = "sub">Youtube</span></p></a>
+    </p>
+   </body>
+</html>
